@@ -1,0 +1,49 @@
+# EditorConfig: http://EditorConfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# General settings
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{cmd,bat}]
+end_of_line = crlf
+
+[*.xml]
+charset = utf-8
+indent_size = 2
+indent_style = space
+
+[*.md]
+charset = utf-8
+# Markdown renders \b\b at EoL as <BR>
+trim_trailing_whitespace = false
+
+# Source code files
+[*.{gradle,java,kt,kts,sql,sh,py}]
+charset = utf-8
+indent_size = 4
+indent_style = space
+
+[*.{kt,kts}]
+ij_kotlin_import_nested_classes = false
+ij_kotlin_imports_layout = *,java.**,javax.**,kotlin.**,^
+ij_kotlin_name_count_to_use_star_import = 2147483647
+ij_kotlin_name_count_to_use_star_import_for_members = 2147483647
+ij_kotlin_packages_to_use_import_on_demand = unset
+kotlin_imports_layout = *,java.*,javax.*,kotlin.*,^* # ktlint 0.38.1 uses ou
+max_line_length = 120 # it seems it doesn't work :-(
+
+# UI code files
+[*.{js,jsx,ts,tsx,json,scss}]
+charset = utf-8
+indent_size = 2
+indent_style = space
+
+[*.yml]
+charset = utf-8
+indent_size = 2
+indent_style = space
