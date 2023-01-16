@@ -5,7 +5,7 @@ name: GitHub Actions - Tagged release
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
 
 jobs:
   build-and-publish-master:
