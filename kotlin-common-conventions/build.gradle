@@ -29,16 +29,16 @@ static String gradlePluginImplementation(String id, String version) {
     return "${id}:${id}.gradle.plugin:${version}"
 }
 
-def substituteKotlinModule(DependencySubstitutions ds, String moduleNotation) {
-    ds.substitute(ds.module(moduleNotation)).using(ds.module("$moduleNotation:$kotlin_version"))
-}
-
 dependencies {
     implementation(gradlePluginImplementation("org.jetbrains.kotlin.jvm", kotlin_version))
     // Kotlin style checker (3.0.x is for Kotlin 1.4)
     implementation(gradlePluginImplementation("org.jmailen.kotlinter", "3.0.2"))
     // Documentation engine for Kotlin
     implementation(gradlePluginImplementation("org.jetbrains.dokka", kotlin_version))
+}
+
+def substituteKotlinModule(DependencySubstitutions ds, String moduleNotation) {
+    ds.substitute(ds.module(moduleNotation)).using(ds.module("$moduleNotation:$kotlin_version"))
 }
 
 configurations.all {
