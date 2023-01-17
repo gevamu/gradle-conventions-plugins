@@ -30,8 +30,8 @@ repositories {
 subprojects { Project subproject ->
     apply plugin: 'maven-publish'
 
-    version release_version
-    group projects_group
+    version = release_version
+    group = 'com.gevamu.plugins'
 
     pluginManager.withPlugin('java') {
         java {
@@ -42,13 +42,13 @@ subprojects { Project subproject ->
 
         pluginManager.withPlugin('java-gradle-plugin') {
             pluginBundle {
-                website = vcs_url
-                vcsUrl = vcs_url
+                website = "$vcs_url"
+                vcsUrl = "$vcs_url"
                 tags = ['gevamu']
 
                 mavenCoordinates {
-                    groupId = projects_group
-                    artifactId = project.name
+                    groupId = subproject.group
+                    artifactId = subproject.name
                 }
             }
         }
@@ -68,15 +68,6 @@ subprojects { Project subproject ->
                 languageVersion = '1.4'
                 freeCompilerArgs = ['-Xjvm-default=all']
             }
-        }
-    }
-
-    tasks.withType(Test).configureEach {
-        useJUnitPlatform()
-
-        doFirst {
-            systemProperty 'java.io.tmpdir', buildDir.absolutePath
-            systemProperty 'test.gradle.user.home', gradle.gradleUserHomeDir
         }
     }
 
@@ -126,8 +117,8 @@ subprojects { Project subproject ->
             }
 
             register(subproject.name, MavenPublication) {
-                groupId "$projects_group"
-                artifactId subproject.name
+                groupId = subproject.group
+                artifactId = subproject.name
                 pluginManager.withPlugin('java') {
                     if (subproject.hasProperty('mavenArtifacts')) {
                         subproject.mavenArtifacts.call(it)
@@ -147,31 +138,27 @@ subprojects { Project subproject ->
                     }
                 }
 
-                pluginManager.withPlugin('java-gradle-plugin') {
-                    subproject.extensions['gradlePlugin'].plugins.configureEach { plugin ->
-                        def pluginMarkerName = subproject.name + '-' + plugin.name
-                        register(pluginMarkerName, MavenPublication) {
-                            groupId plugin.id
-                            artifactId plugin.id + '.gradle.plugin'
-
-                            pom {
-                                name = "Gradle plugin marker for ${plugin.id}"
-                                description = subproject.description
-                                packaging 'pom'
-                                withXml {
-                                    def dependency = asNode(null).appendNode('dependencies').appendNode('dependency')
-                                    dependency.appendNode('groupId', subproject.group)
-                                    dependency.appendNode('artifactId', subproject.name)
-                                    dependency.appendNode('version', subproject.version)
-                                }
-                            }
-                        }
-
-                        subproject.artifactoryPublish {
-                            publications pluginMarkerName
-                        }
-                    }
-                }
+//                pluginManager.withPlugin('java-gradle-plugin') {
+//                    subproject.extensions['gradlePlugin'].plugins.configureEach { plugin ->
+//                        def pluginMarkerName = subproject.name + '-' + plugin.name
+//                        register(pluginMarkerName, MavenPublication) {
+//                            groupId subproject.group
+//                            artifactId subproject.name + '.gradle.plugin'
+//
+//                            pom {
+//                                name = "Gradle plugin marker for ${plugin.id}"
+//                                description = subproject.description
+//                                packaging 'pom'
+//                                withXml {
+//                                    def dependency = asNode().appendNode('dependencies').appendNode('dependency')
+//                                    dependency.appendNode('groupId', subproject.group)
+//                                    dependency.appendNode('artifactId', subproject.name)
+//                                    dependency.appendNode('version', subproject.version)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
             }
         }
     }
