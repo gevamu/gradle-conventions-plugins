@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
+val kotlin_version: String by rootProject
+val vcs_url: String by rootProject
+
 plugins {
-    id "java-gradle-plugin"
-    id "maven-publish"
-    id "com.gradle.plugin-publish"
+    id("java-gradle-plugin")
+    id("maven-publish")
+    id("com.gradle.plugin-publish")
 }
 
 repositories {
@@ -25,44 +28,35 @@ repositories {
     gradlePluginPortal()
 }
 
-static String gradlePluginImplementation(String id, String version) {
-    return "${id}:${id}.gradle.plugin:${version}"
-}
-
 dependencies {
-    implementation(gradlePluginImplementation("org.jetbrains.kotlin.jvm", kotlin_version))
+    implementation(gradlePlugin("org.jetbrains.kotlin.jvm", kotlin_version))
     // Kotlin style checker (3.0.x is for Kotlin 1.4)
-    implementation(gradlePluginImplementation("org.jmailen.kotlinter", "3.0.2"))
+    implementation(gradlePlugin("org.jmailen.kotlinter", "3.0.2"))
     // Documentation engine for Kotlin
-    implementation(gradlePluginImplementation("org.jetbrains.dokka", kotlin_version))
-}
-
-def substituteKotlinModule(DependencySubstitutions ds, String moduleNotation) {
-    ds.substitute(ds.module(moduleNotation)).using(ds.module("$moduleNotation:$kotlin_version"))
+    implementation(gradlePlugin("org.jetbrains.dokka", kotlin_version))
 }
 
 configurations.all {
     resolutionStrategy.dependencySubstitution {
-        substituteKotlinModule(it, "org.jetbrains.kotlin:kotlin-stdlib-jdk7")
-        substituteKotlinModule(it, "org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        substituteKotlinModule("org.jetbrains.kotlin:kotlin-stdlib-jdk7")
+        substituteKotlinModule("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     }
 }
 
 gradlePlugin {
     plugins {
-        kotlinCommon {
+
+        create("kotlinCommonConventions")  {
             id = "${group}.kotlin-common-conventions"
             implementationClass = "${group}.KotlinCommonPlugin"
             displayName = "Kotlin Common Conventions"
             description = "Custom plugin setup"
         }
     }
-    automatedPublishing = true
 }
 
-pluginBundle {
-    website = vcs_url
-    vcsUrl = vcs_url
-    tags = ['gevamu']
-}
+fun gradlePlugin(id: String, version: String) = "$id:$id.gradle.plugin:$version"
 
+fun DependencySubstitutions.substituteKotlinModule(moduleNotation: String) {
+    substitute(module(moduleNotation)).using(module("$moduleNotation:$kotlin_version"))
+}
