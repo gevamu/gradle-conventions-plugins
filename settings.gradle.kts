@@ -12,3 +12,4 @@ pluginManagement {
 
 include("kotlin-common-conventions")
 include("cordformation-conventions")
+include("java-common-conventions")

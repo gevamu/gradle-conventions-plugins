@@ -8,7 +8,7 @@ import org.gradle.kotlin.dsl.repositories
 
 plugins {
     id("net.corda.plugins.cordformation")
-    id("java")
+    java
 }
 
 // XXX or by project() ?
