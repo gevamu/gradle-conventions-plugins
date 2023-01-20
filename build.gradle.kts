@@ -27,9 +27,13 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.32"
 }
 
+fun gradlePlugin(id: String, version: String) = "$id:$id.gradle.plugin:$version"
+
+
 repositories {
     gradlePluginPortal()
     mavenCentral()
+    maven("https://software.r3.com/artifactory/corda")
 }
 
 subprojects {
