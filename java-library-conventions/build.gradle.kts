@@ -1,6 +1,7 @@
 plugins {
     // Support convention plugins written in Kotlin.
     `kotlin-dsl`
+//    id("com.gevamu.java-common-conventions")
 }
 
 repositories {
@@ -16,6 +17,7 @@ dependencies {
     implementation(gradlePlugin("net.corda.plugins.quasar-utils", "5.1.0"))
     implementation(gradlePlugin("net.corda.plugins.cordapp", "5.1.0"))
     implementation(gradlePlugin("net.corda.plugins.cordformation", "5.1.0"))
+//    implementation(project(":java-common-conventions"))
 }
 
 fun gradlePlugin(id: String, version: String) = "$id:$id.gradle.plugin:$version"
