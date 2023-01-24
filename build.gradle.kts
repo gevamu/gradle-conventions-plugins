@@ -1,6 +1,8 @@
 val projects = listOf(
     "plugin-common-conventions",
-    "java-common-conventions"
+    "java-common-conventions",
+    "java-library-conventions",
+    "kotlin-common-conventions"
 )
 
 

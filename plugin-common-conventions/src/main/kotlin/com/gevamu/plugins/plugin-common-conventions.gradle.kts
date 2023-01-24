@@ -19,6 +19,8 @@ package com.gevamu.plugins
 val vcsUrl: String = "https://github.com/gevamu/gradle-conventions-plugins/"
 val pluginsGroup: String = "com.gevamu.plugins"
 
+project.group = pluginsGroup
+
 plugins {
     `maven-publish`
     `java-gradle-plugin`
@@ -61,8 +63,8 @@ tasks.withType<Jar> {
 gradlePlugin {
     plugins {
         create("pluginCommonConventions")  {
-            id = "${group}.plugin-common-conventions"
-            implementationClass = "${group}.PluginCommonConventionsPlugin"
+            id = "${project.group}.plugin-common-conventions"
+            implementationClass = "${project.group}.PluginCommonConventionsPlugin"
             displayName = "Plugin Common Conventions"
             description = "Plugin for custom configuration of gevamu related apps"
         }

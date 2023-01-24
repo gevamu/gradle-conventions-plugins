@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-val kotlin_version: String by rootProject
-val vcs_url: String by rootProject
+val kotlin_version: String = "1.4.32"
+
+group = "com.gevamu.plugins"
+version = "0.0.1"
 
 plugins {
-    id("java-gradle-plugin")
-    id("maven-publish")
-    id("com.gradle.plugin-publish")
+    id("com.gevamu.plugins.plugin-common-conventions")
 }
 
 repositories {
@@ -45,7 +45,6 @@ configurations.all {
 
 gradlePlugin {
     plugins {
-
         create("kotlinCommonConventions")  {
             id = "${group}.kotlin-common-conventions"
             implementationClass = "${group}.KotlinCommonPlugin"

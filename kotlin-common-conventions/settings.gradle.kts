@@ -1,4 +1,5 @@
-rootProject.name = "java-common-conventions"
+rootProject.name = "kotlin-common-conventions"
+
 
 pluginManagement {
     repositories {

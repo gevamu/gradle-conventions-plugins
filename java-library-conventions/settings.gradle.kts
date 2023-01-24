@@ -1,4 +1,5 @@
-rootProject.name = "java-common-conventions"
+rootProject.name = "java-library-conventions"
+
 
 pluginManagement {
     repositories {
@@ -8,3 +9,4 @@ pluginManagement {
 
     includeBuild("../plugin-common-conventions")
 }
+includeBuild("../java-common-conventions")

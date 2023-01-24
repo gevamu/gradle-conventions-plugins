@@ -13,7 +13,3 @@ repositories {
     gradlePluginPortal()
 }
 
-dependencies {
-
-}
-

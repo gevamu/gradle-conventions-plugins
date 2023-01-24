@@ -1,23 +1,18 @@
 plugins {
     // Support convention plugins written in Kotlin.
     `kotlin-dsl`
-//    id("com.gevamu.java-common-conventions")
+    id("com.gevamu.plugins.plugin-common-conventions")
 }
 
-repositories {
-    // Use the plugin portal to apply community plugins in convention plugins.
-    gradlePluginPortal()
+group = "com.gevamu.plugins"
+version = "0.0.1"
 
-    // Corda plugins v5.1.0 aren't published to the Gradle Plugin Portal :-(
-    maven("https://software.r3.com/artifactory/corda")
+repositories {
+    gradlePluginPortal()
 }
 
 dependencies {
-    // Corda plugins
-    implementation(gradlePlugin("net.corda.plugins.quasar-utils", "5.1.0"))
-    implementation(gradlePlugin("net.corda.plugins.cordapp", "5.1.0"))
-    implementation(gradlePlugin("net.corda.plugins.cordformation", "5.1.0"))
-//    implementation(project(":java-common-conventions"))
+    implementation(gradlePlugin("com.gevamu.plugins.java-common-conventions", "0.0.1"))
 }
 
 fun gradlePlugin(id: String, version: String) = "$id:$id.gradle.plugin:$version"
