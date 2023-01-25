@@ -1,11 +1,13 @@
 plugins {
     // Support convention plugins written in Kotlin.
     `kotlin-dsl`
-    id("com.gevamu.plugins.plugin-common-conventions") version("0.0.1")
+    id("com.gevamu.plugins.plugin-common-conventions")
 }
 
+val plugin_version: String by project
+
 group = "com.gevamu.plugins"
-version = "0.0.1"
+version = plugin_version
 
 repositories {
     gradlePluginPortal()

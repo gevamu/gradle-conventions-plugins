@@ -1,0 +1,34 @@
+# Build and publish for each push to branch master
+# Java common module
+
+name: GitHub Actions - Tagged release
+
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build-and-publish-master:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v13
+        id: verify-changed-files
+        with:
+          files: |
+            java-common-conventions/gradle.properties
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'corretto'
+          java-version: '8'
+          cache: 'gradle'
+
+      - name: 'Build and publish'
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./java-common-conventions/gradlew build publish --no-daemon

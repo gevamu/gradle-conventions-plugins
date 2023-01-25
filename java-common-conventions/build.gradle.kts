@@ -5,8 +5,10 @@ plugins {
     id("com.gevamu.plugins.plugin-common-conventions")
 }
 
+val plugin_version: String by project
+
 group = "com.gevamu.plugins"
-version = "0.0.1"
+version = plugin_version
 
 repositories {
     // Use the plugin portal to apply community plugins in convention plugins.

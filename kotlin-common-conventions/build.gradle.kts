@@ -14,10 +14,11 @@
  * limitations under the License.
  */
 
-val kotlin_version: String = "1.4.32"
+val kotlin_version: String by project
+val plugin_version: String by project
 
 group = "com.gevamu.plugins"
-version = "0.0.1"
+version = plugin_version
 
 plugins {
     id("com.gevamu.plugins.plugin-common-conventions")

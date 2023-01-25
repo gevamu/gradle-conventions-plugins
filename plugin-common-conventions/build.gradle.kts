@@ -4,8 +4,10 @@ plugins {
     `maven-publish`
 }
 
+val plugin_version: String by project
+
 group = "com.gevamu.plugins"
-version = "0.0.1"
+version = plugin_version
 
 repositories {
     gradlePluginPortal()
