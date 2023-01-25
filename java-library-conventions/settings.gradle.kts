@@ -9,4 +9,5 @@ pluginManagement {
 
     includeBuild("../plugin-common-conventions")
 }
+
 includeBuild("../java-common-conventions")

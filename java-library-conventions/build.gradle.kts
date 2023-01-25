@@ -12,7 +12,8 @@ repositories {
 }
 
 dependencies {
-    implementation(gradlePlugin("com.gevamu.plugins.java-common-conventions", "0.0.1"))
+//    implementation(gradlePlugin("com.gevamu.plugins.java-common-conventions", "0.0.1"))
+    implementation("com.gevamu.plugins:java-common-conventions")
 }
 
 fun gradlePlugin(id: String, version: String) = "$id:$id.gradle.plugin:$version"
