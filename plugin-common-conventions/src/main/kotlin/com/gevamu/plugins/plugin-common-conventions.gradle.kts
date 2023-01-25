@@ -41,23 +41,6 @@ tasks.withType<Jar> {
     }
 }
 
-//fun applyJava(project: Project) {
-//    project.pluginManager.apply(JavaPlugin::class.java)
-//
-//    val javaPlugin = extensions.getByType(JavaPlugin::class.java)
-//
-//    javaPlugin.add
-//}
-
-//pluginManager.withPlugin("java") {
-//    from(components["java"])
-//    artifact(tasks.register("sourcesJar", org.gradle.jvm.tasks.Jar::class) {
-//        dependsOn(tasks["classes"])
-//        archiveClassifier.set("sources")
-//        from(sourceSets.main.get().allSource)
-//    })
-//}
-
 gradlePlugin {
     plugins {
         create("pluginCommonConventions")  {
@@ -77,16 +60,9 @@ pluginBundle {
 
 publishing {
     publications {
-        val found = this.filterIsInstance<MavenPublication>()
-        found.forEach {
+        this.filterIsInstance<MavenPublication>().forEach {
             it.setupPom()
         }
-//        create<MavenPublication>(project.name) {
-//            groupId = project.group.toString()
-//            artifactId = project.name
-//            artifact(project.tasks["sourcesJar"])
-//            this.setupPom()
-//        }
     }
     repositories {
         maven {
