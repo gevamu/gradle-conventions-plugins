@@ -37,7 +37,6 @@ tasks.withType<Jar> {
         attributes["Implementation-Title"] = project.name
         attributes["Implementation-Vendor"] = "Exactpro Systems LLC"
         attributes["Implementation-Vendor-Id"] = "com.exactpro"
-        attributes["Implementation-Version"] = project.version
         attributes["Implementation-License"] = "Apache License Version 2.0"
     }
 }
