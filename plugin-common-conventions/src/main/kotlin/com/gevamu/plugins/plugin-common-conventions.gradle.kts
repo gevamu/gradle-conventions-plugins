@@ -50,7 +50,6 @@ tasks.withType<Jar> {
 //    javaPlugin.add
 //}
 
-
 //pluginManager.withPlugin("java") {
 //    from(components["java"])
 //    artifact(tasks.register("sourcesJar", org.gradle.jvm.tasks.Jar::class) {
@@ -91,20 +90,20 @@ publishing {
 //        }
     }
     repositories {
-//        maven {
-//            name = "GitHubPackages"
-//            setUrl("https://maven.pkg.github.com/gevamu/plugin-common-conventions")
-//            credentials {
-//                username = System.getenv("GITHUB_ACTOR")
-//                password = System.getenv("GITHUB_TOKEN")
-//            }
-//        }
-        repositories {
-            maven {
-                name = "test"
-                setUrl("file://" + System.getenv("HOME") + "/.m2/repository/")
+        maven {
+            name = "GitHubPackages"
+            setUrl("https://maven.pkg.github.com/gevamu/plugin-common-conventions")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
+//        repositories {
+//            maven {
+//                name = "test"
+//                setUrl("file://" + System.getenv("HOME") + "/.m2/repository/")
+//            }
+//        }
     }
 }
 
