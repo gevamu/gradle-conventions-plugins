@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.gevamu.plugins:java-common-conventions:0.0.1")
+    implementation("com.gevamu.plugins:java-library-conventions:0.0.1")
     // Corda plugins
     implementation(gradlePlugin("net.corda.plugins.quasar-utils", "5.1.0"))
     implementation(gradlePlugin("net.corda.plugins.cordapp", "5.1.0"))

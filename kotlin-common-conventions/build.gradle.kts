@@ -50,7 +50,7 @@ gradlePlugin {
             id = "${group}.kotlin-common-conventions"
             implementationClass = "${group}.KotlinCommonPlugin"
             displayName = "Kotlin Common Conventions"
-            description = "Custom plugin setup"
+            description = "Custom Kotlin setup for gevamu projects"
         }
     }
 }
