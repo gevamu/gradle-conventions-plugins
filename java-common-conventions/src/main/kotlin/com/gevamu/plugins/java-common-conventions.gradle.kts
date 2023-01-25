@@ -16,16 +16,6 @@
 
 package com.gevamu.plugins
 
-import gradle.kotlin.dsl.accessors._027823db16a7648d7c1bfd0b52d83d37.implementation
-import gradle.kotlin.dsl.accessors._027823db16a7648d7c1bfd0b52d83d37.java
-import gradle.kotlin.dsl.accessors._027823db16a7648d7c1bfd0b52d83d37.test
-import gradle.kotlin.dsl.accessors._027823db16a7648d7c1bfd0b52d83d37.testImplementation
-import gradle.kotlin.dsl.accessors._027823db16a7648d7c1bfd0b52d83d37.testRuntimeOnly
-import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.java
-import org.gradle.kotlin.dsl.`java-test-fixtures`
-import org.gradle.kotlin.dsl.repositories
-
 plugins {
     // Apply the java Plugin to add support for Java.
     java

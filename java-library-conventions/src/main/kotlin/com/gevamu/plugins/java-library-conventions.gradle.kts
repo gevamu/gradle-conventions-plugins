@@ -1,7 +1,5 @@
 package com.gevamu.plugins
 
-import org.gradle.kotlin.dsl.`java-library`
-
 plugins {
     // Include Java Common Conventions
     id("com.gevamu.plugins.java-common-conventions")

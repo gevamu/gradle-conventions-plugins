@@ -8,6 +8,7 @@ group = "com.gevamu.plugins"
 version = "0.0.1"
 
 repositories {
+    // Use the plugin portal to apply community plugins in convention plugins.
     gradlePluginPortal()
 }
 
