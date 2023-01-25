@@ -4,6 +4,7 @@ val projects = listOf(
     "java-library-conventions",
     "kotlin-common-conventions",
     "cordformation-conventions",
+    "kotlin-cordapp-conventions",
     "publish-cordapp-conventions"
 )
 

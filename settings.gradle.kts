@@ -10,5 +10,6 @@ pluginManagement {
     includeBuild("java-common-conventions")
     includeBuild("java-library-conventions")
     includeBuild("cordformation-conventions")
+    includeBuild("kotlin-cordapp-conventions")
     includeBuild("publish-cordapp-conventions")
 }
