@@ -36,7 +36,7 @@ tasks.withType<Jar> {
         attributes["Specification-Vendor"] = "Exactpro Systems LLC"
         attributes["Implementation-Title"] = project.name
         attributes["Implementation-Vendor"] = "Exactpro Systems LLC"
-        attributes["Implementation-Vendor-Id"] = "com.exactpro"
+        attributes["Implementation-Vendor-Id"] = "com.gevamu"
         attributes["Implementation-License"] = "Apache License Version 2.0"
     }
 }
@@ -67,7 +67,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            setUrl("https://maven.pkg.github.com/gevamu/plugin-common-conventions")
+            setUrl(vcsUrl)
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")

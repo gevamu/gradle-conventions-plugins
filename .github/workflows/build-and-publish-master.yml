@@ -21,6 +21,7 @@ jobs:
             publish-cordapp-conventions/gradle.properties
 
       - uses: actions/setup-java@v3
+        if: steps.verify-publish-cordapp-updated.outputs.any_changed == 'true'
         with:
           distribution: 'corretto'
           java-version: '8'
@@ -44,6 +45,7 @@ jobs:
             kotlin-cordapp-conventions/gradle.properties
 
       - uses: actions/setup-java@v3
+        if: steps.verify-kotlin-cordapp-updated.outputs.any_changed == 'true'
         with:
           distribution: 'corretto'
           java-version: '8'
@@ -67,6 +69,7 @@ jobs:
             kotlin-common-conventions/gradle.properties
 
       - uses: actions/setup-java@v3
+        if: steps.verify-kotlin-common-updated.outputs.any_changed == 'true'
         with:
           distribution: 'corretto'
           java-version: '8'
@@ -90,6 +93,7 @@ jobs:
             java-library-conventions/gradle.properties
 
       - uses: actions/setup-java@v3
+        if: steps.verify-java-library-updated.outputs.any_changed == 'true'
         with:
           distribution: 'corretto'
           java-version: '8'
@@ -113,6 +117,7 @@ jobs:
             java-common-conventions/gradle.properties
 
       - uses: actions/setup-java@v3
+        if: steps.verify-java-common-updated.outputs.any_changed == 'true'
         with:
           distribution: 'corretto'
           java-version: '8'
@@ -136,6 +141,7 @@ jobs:
             cordformation-conventions/gradle.properties
 
       - uses: actions/setup-java@v3
+        if: steps.verify-cordformation-updated.outputs.any_changed == 'true'
         with:
           distribution: 'corretto'
           java-version: '8'

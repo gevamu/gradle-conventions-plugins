@@ -14,6 +14,5 @@ repositories {
 }
 
 dependencies {
-//    implementation(gradlePlugin("com.gevamu.plugins.java-common-conventions", "0.0.1"))
     implementation("com.gevamu.plugins:java-common-conventions:0.0.1")
 }
