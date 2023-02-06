@@ -1,25 +1,154 @@
-# Build and publish for each push  to branch master
+# Build and publish for each push to branch master
 
-name: GitHub Actions - Tagged release
+name: GitHub Actions - Publish plugin modules
 
 on:
   push:
     branches:
-      - 'main'
+      - 'master'
 
 jobs:
-  build-and-publish-master:
+  build-and-publish-master-publish-cordapp:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
+      - name: Verify Changed files
+        uses: tj-actions/changed-files@v35
+        id: verify-publish-cordapp-updated
+        with:
+          files: |
+            publish-cordapp-conventions/gradle.properties
+
       - uses: actions/setup-java@v3
+        if: steps.verify-publish-cordapp-updated.outputs.any_changed == 'true'
         with:
           distribution: 'corretto'
           java-version: '8'
           cache: 'gradle'
 
-      - name: 'Build'
+      - name: 'Build and publish'
+        if: steps.verify-publish-cordapp-updated.outputs.any_changed == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew build publish --no-daemon
+        run: ./gradlew :publish-cordapp-conventions:build :publish-cordapp-conventions:publish --no-daemon
+  build-and-publish-master-kotlin-cordapp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify Changed files
+        uses: tj-actions/changed-files@v35
+        id: verify-kotlin-cordapp-updated
+        with:
+          files: |
+            kotlin-cordapp-conventions/gradle.properties
+
+      - uses: actions/setup-java@v3
+        if: steps.verify-kotlin-cordapp-updated.outputs.any_changed == 'true'
+        with:
+          distribution: 'corretto'
+          java-version: '8'
+          cache: 'gradle'
+
+      - name: 'Build and publish'
+        if: steps.verify-kotlin-cordapp-updated.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :kotlin-cordapp-conventions:build :kotlin-cordapp-conventions:publish --no-daemon
+  build-and-publish-master-kotlin-common:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify Changed files
+        uses: tj-actions/changed-files@v35
+        id: verify-kotlin-common-updated
+        with:
+          files: |
+            kotlin-common-conventions/gradle.properties
+
+      - uses: actions/setup-java@v3
+        if: steps.verify-kotlin-common-updated.outputs.any_changed == 'true'
+        with:
+          distribution: 'corretto'
+          java-version: '8'
+          cache: 'gradle'
+
+      - name: 'Build and publish'
+        if: steps.verify-kotlin-common-updated.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :kotlin-common-conventions:build :kotlin-common-conventions:publish --no-daemon
+  build-and-publish-master-java-library:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify Changed files
+        uses: tj-actions/changed-files@v35
+        id: verify-java-library-updated
+        with:
+          files: |
+            java-library-conventions/gradle.properties
+
+      - uses: actions/setup-java@v3
+        if: steps.verify-java-library-updated.outputs.any_changed == 'true'
+        with:
+          distribution: 'corretto'
+          java-version: '8'
+          cache: 'gradle'
+
+      - name: 'Build and publish'
+        if: steps.verify-java-library-updated.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :java-library-conventions:build :java-library-conventions:publish --no-daemon
+  build-and-publish-master-java-common:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify Changed files
+        uses: tj-actions/changed-files@v35
+        id: verify-java-common-updated
+        with:
+          files: |
+            java-common-conventions/gradle.properties
+
+      - uses: actions/setup-java@v3
+        if: steps.verify-java-common-updated.outputs.any_changed == 'true'
+        with:
+          distribution: 'corretto'
+          java-version: '8'
+          cache: 'gradle'
+
+      - name: 'Build and publish'
+        if: steps.verify-java-common-updated.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :java-common-conventions:build :java-common-conventions:publish --no-daemon
+  build-and-publish-master-cordformation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Verify Changed files
+        uses: tj-actions/changed-files@v35
+        id: verify-cordformation-updated
+        with:
+          files: |
+            cordformation-conventions/gradle.properties
+
+      - uses: actions/setup-java@v3
+        if: steps.verify-cordformation-updated.outputs.any_changed == 'true'
+        with:
+          distribution: 'corretto'
+          java-version: '8'
+          cache: 'gradle'
+
+      - name: 'Build and publish'
+        if: steps.verify-cordformation-updated.outputs.any_changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew :cordformation-conventions:build :cordformation-conventions:publish --no-daemon
